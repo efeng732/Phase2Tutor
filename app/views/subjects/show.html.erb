@@ -1,0 +1,37 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="joiners">
+<h1> Here are the tutors that teach this Subject! </h1>
+
+<h3> Click on their names to view more information about them! </h3>
+
+<% new_array = [] %>
+<%TutorSubject.all.each do |subject|%>
+    <% if subject.subject_id == @subject.id%>
+    <% new_array << subject.tutor_id %>
+    <%end%>
+
+    <%end%>
+
+
+   <p> <% new_array.each do |tutor_id| %>
+    <% @find_tutor = Tutor.all.find(tutor_id)%>
+    <%= link_to @find_tutor.first_name, tutor_path(@find_tutor)%> <br></p>
+    <%end%>
+
+    </div>
+    
+    
+
+
+
+
+
+
+
+

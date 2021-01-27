@@ -1,0 +1,14 @@
+
+<br>
+<br> 
+<br>
+<br>
+<div class="joiners">
+<h1>Subjects Our Tutors Teach </h1>
+<div class="subjfont">
+    <% @subjects.each do |subject|%>
+     <p><ul style="list-style-type:circle;"><%= link_to subject.subject, subject_path(subject.id) %>
+    </ul>
+    <% end %>
+</div>    
+</div>

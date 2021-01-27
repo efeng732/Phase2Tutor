@@ -1,0 +1,31 @@
+<br>
+<br>
+<br>
+<br>
+
+<div class="student">
+<h1> Edit your info here <%=@student.full_name %></h1> 
+
+
+<%= form_for @student do |f| %>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %> <br>
+  <%= f.label :last_name %>
+  <%= f.text_field :last_name %><br>
+  <%= f.label :age %>
+  <%= f.number_field :age %><br>
+  <%= f.label :bio %>
+  <%= f.text_area :bio%><br>
+  <%= f.label :password%>
+  <%= f.password_field :password%>
+
+
+
+  <%= f.submit "Edit!" %>
+<% end %>
+<br>
+<br>
+</div>
+<div class="stueditimg">
+<img src="https://memegenerator.net/img/instances/62858388.jpg" alt="to change or not to change">
+</div>

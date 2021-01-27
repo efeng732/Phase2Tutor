@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Phase2TutorSite</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  
+
+  </head>
+
+  <body>
+        <% if check_and_see_if_someone_is_logged_in? %>
+       <div class ="navbar"> 
+      <nav>
+      <ul>
+        <p style="color:red; font-size:16x; border:solid; border-radius: 10px; background-color: white; opacity: 0.9; box-shadow: 2px 2px;" > LOGGED IN: <%= @current_student.first_name %> </p>
+
+       <li> <%= button_to "LOG OUT", logout_path, method: :delete %> </li>
+       <li> <%= button_to "My Profile", student_path(@current_student), method: :get %></li>
+       <li> <%= button_to "Delete Student", @student, method: :delete%> </li>
+       <li> <%= button_to "Edit Student", edit_student_path(@current_student), method: :get%></li>
+
+       
+     <li> <%= button_to "Add Subject", new_student_subject_path, method: :get %> </li>
+      <li><%= button_to "Make an Appointment Today!", new_appointment_path, method: :get%></li>
+      <li><%= button_to "Leave a Review!", new_review_path, method: :get%></li>
+
+      <li><%= button_to "See Our Tutors", tutors_path, method: :get%></li> 
+      <li><%= button_to "View All of Our Subjects", subjects_path, method: :get%></li>
+      <li><%= button_to "See Our Current Clients", students_path, method: :get%></li>
+
+      </ul>
+
+      </nav>
+   
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

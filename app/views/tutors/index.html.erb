@@ -1,0 +1,63 @@
+<div class="parent">
+   
+    <div class= "div2">
+    <div class= "dwight">
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img src = "https://lh3.googleusercontent.com/proxy/2hRUOnxcrdlZHxCwfC-KYpxQS-rA6L0kmojVJCXPB_fnjXJlDLqxXHIxuNXbFHdn6u-1hwhL7aOc98AT3Yt3V_WS_6ySQZPiB3L1ydotmTb57nfTxnYNGljEaCXhpkwFsuwf3PHK3CJk1zI80O5bs8VajM6afrxuBvg" alt="Dwight Tutor" width="300" height="200">
+    </div>
+    </div>
+
+    <div class ="div1">
+    <div class="intro">
+<br>
+<br>
+<br>
+<br>
+<div class="about">
+<h1> About Us </h1>
+<p><b>We are a small scale tutoring company that covers a wide variety of subjects ranging from computer science to underwater basket weaving! </p>
+<p>We originally were based on the East Coast of the United States, but after recent events we have relocated to London, a safer English speaking country.
+But honestly it was because default time is UTC and it was easier to move our entire company than convert the 5 hour difference. I swear we're good at math. </p>
+<p>Our tutors are carefully vetted and selected using an interview process similar rolling a dice and judging their level of desperation for money.
+They all work everyday 9AM-5PM, no weekends off because Unions are bad. Just ask Daddy Bezos. Each appointment block you set with a tutor will last one hour.  </p>
+
+I hope you all will enjoy our site and your grades improve! -- EF + JH </b>
+<h6><i> Seriously though we're about to go bankrupt, sign up please. We're out of organs to sell </i></h6>
+</div>
+</div>
+    </div>
+
+
+
+    <div class="div3">
+    <div class="tutorlist">
+    <div class="tutor">
+<h2> All of Our Tutors! </h2>
+
+<ul>
+    <% @tutors.map do |tutor|%>
+    <p>
+        <li> <h3><b> 
+        <%= link_to tutor.full_name, tutor_path(tutor.id)%>
+        <br> </b></h3>
+         <b>Education: </b><%= tutor.education%> <br>
+         <b>Years of experience:</b> <%= tutor.years%> <br>
+         <b>About me: </b><%= tutor.bio%> 
+         
+         </li></p>
+         <%end%>
+         </div>
+
+
+</ul>
+</div>
+</div>
+</div>

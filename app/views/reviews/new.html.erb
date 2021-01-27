@@ -1,0 +1,48 @@
+<br>
+<br>
+<br> 
+<br>
+<br>
+<div class="joiners">
+<h1> Leave a Review! </h1>
+
+
+<img src= "https://christierney.files.wordpress.com/2013/10/comichighlighting1.png?w=776&h=603" style="max-height: 450px; max-width: 450px;"> 
+<br>
+<br>
+
+
+
+
+<% if @errors %>
+<%@errors.each do |error|%>
+<p style= "color: red; font-size: 24px"> <%= error %></p>
+<%end%>
+<%end%>
+
+<%= form_for @review do |f|%>
+
+<%= f.label :tutor_id%>
+<%= f.collection_select :tutor_id, Tutor.all, :id, :first_name%>
+<%= f.hidden_field :student_id, value: @current_student.id %>
+
+<%= f.label :review%>
+<%= f.text_field :review%>
+<%= f.label :rating%>
+<%= f.number_field :rating%>
+<%= f.submit %>
+
+<% end %>
+
+<h2> Current Reviews you've written: </h2>
+
+<p><% @current_student.reviews.each do |review| %>
+<% @tutor_id = review.tutor_id%>
+<%= review.review %> <br>
+I give <%= Tutor.find(@tutor_id).first_name%> a
+ <%= review.rating %>
+out of 10!
+</p>
+<%end %>
+</div>
+

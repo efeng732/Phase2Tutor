@@ -1,0 +1,51 @@
+<br>
+<br>
+<br> 
+<br>
+<br>
+<% if @errors %>
+<%@errors.each do |error|%>
+<p style= "color: red; font-size: 24px"> <%= error %></p>
+<%end%>
+<%end%>
+
+
+<div class="joiners">
+<h1> Set up your appointment here! </h1>
+
+
+<img src= "https://i.pinimg.com/originals/f4/a6/b7/f4a6b75db4d747aa3d1c3efc86845e65.png" style="max-height: 350px; max-width: 350px;"> 
+<br>
+<br>
+
+
+
+
+<%= form_for @appointment do |f| %>
+<%= f.label :tutor_id%>
+<%= f.collection_select :tutor_id, Tutor.all, :id, :first_name%>
+<%= f.hidden_field :student_id, value: @current_student.id %>
+<%= f.datetime_select :time, start_year: Time.now.year, end_year: Time.now.year+1, start_hour: 9, end_hour: 17, ampm: true, discard_minute: true %><br>
+
+<%= f.submit%> <br>
+
+
+
+<%end%>
+
+<%=  button_to "Go back to All Tutors Page", tutors_path, method: :get%>
+
+
+<h2> Current Appointments you have: </h2>
+
+<p><% @current_student.appointments.each do |appointment| %>
+<% @tutor_id = appointment.tutor_id%>
+<%= appointment.time %> 
+with <%= Tutor.find(@tutor_id).first_name%> 
+
+
+<%end %>
+</div>
+</p>
+
+

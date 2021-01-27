@@ -1,0 +1,19 @@
+<h1> Leave a Message for a Student! </h1>
+
+<% if @errors %>
+<%@errors.each do |error|%>
+<p style= "color: red"> <%= error %></p>
+<%end%>
+<%end%>
+
+<%= form_for @student_inbox do |f|%>
+<%= f.label :tutor_id%>
+<%= f.collection_select :tutor_id, Tutor.all, :id, :first_name%>
+<%= f.label :student_id%>
+<%= f.collection_select :student_id, Student.all, :id, :first_name %>
+<%= f.label :message%>
+<%= f.text_field :message%>
+<%= f.submit "Send" %>
+
+<% end %>
+

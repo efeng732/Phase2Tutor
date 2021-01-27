@@ -1,0 +1,30 @@
+<br>
+<br>
+<br> 
+<br>
+<br>
+<div class="student">
+<h1> All Our Students! </h1>
+
+<ul>
+    <% @students.map do |student|%>
+    <li> <h3><b>
+    <%= link_to student.full_name, student_path(student.id) %>
+    </b></h3></li>
+
+        <b> I Need Help with: </b>
+
+            <%student.student_subjects.map do |subject|%>
+            <%@sub = subject.subject_id%>
+            <ul>
+            <li> <%= Subject.all.find(@sub).subject%> </li>
+            </ul>
+
+            <% end %> 
+    <% end %>
+
+
+</ul>
+
+</div>
+

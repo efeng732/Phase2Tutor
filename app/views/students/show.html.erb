@@ -1,0 +1,45 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+
+<% if flash[:error]%>
+<p style= "color: red; font-size: 24px "><%= flash[:error] %></p>
+<%end%>
+
+
+<div class ="student">
+
+<h1> <%= @student.full_name %></h1>
+
+
+<p><b> Age: </b><%= @student.age %> </p>
+<p><b> Bio: </b><%= @student.bio %> </p>
+<p><b> I Need Help with: </b>
+<ul>
+
+    <% @student.student_subjects.map do |subject|%>
+    <% @sub = subject.subject_id%>
+   <li> <%= Subject.all.find(@sub).subject%> </li>
+    <%end%>
+</ul>
+</p>
+
+<b>Current Appointments:</b>
+<ul>
+    <% @student.appointments.map do |appointment| %> 
+        <% @id_num= appointment.tutor_id%> 
+         <li>  <p> <%= Tutor.all.find(@id_num).first_name%>
+            <%= appointment.time%> (Our servers are in London) </p> </li>
+   
+    <%end%>
+    </ul>
+</div>
+
+
+
+

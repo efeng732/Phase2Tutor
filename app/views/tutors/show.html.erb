@@ -1,0 +1,53 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="tutor">
+<h1> <%= @tutor.full_name %></h1>
+<img src= "<%= "#{@tutor.img}" %>" width="220" height="200">
+
+<p><b> Education: </b><%= @tutor.education%> </p>
+<p><b> Years of teaching experience: </b><%= @tutor.years%> </p>
+<p> <b>About me: </b><%= @tutor.bio%> </p>
+
+<p> <b>Subjects I have experience in: </b>  
+    <ul>
+    <%@tutor.tutor_subjects.map do |subject|%>
+    <%@subject_id = subject.subject_id%>
+   <li> <%= Subject.all.find(@subject_id).subject%> </li>
+    <%end%>
+    </ul>
+</p>
+
+<p> <b> My Hourly rate: </b> <%=@tutor.hourly%> </p>
+
+<p> <b>My Reviews: </b></p><%@tutor.reviews.map do |review|%> 
+   <p> <%= review.review%><br>
+    I give this tutor a <%= review.rating%> out of 10! ----
+    <% @reviewer_id = review.student_id%>
+    <%= Student.all.find(@reviewer_id).first_name%><br> </p>
+
+<%end%>
+
+
+
+
+<p><b>Availibility: </b> I work from 9AM to 5PM, here are the time slots I am already taken. Each tutoring session lasts 1 hour. <br><br>
+<b>Here's a list of my current appointments:</b>
+
+    <ul>
+    <% @tutor.appointments.map do |appointment| %> 
+        <% @id_num= appointment.student_id%> 
+         <li>  <p> <%= Student.all.find(@id_num).first_name%>
+            <%= appointment.time%> (Our servers are in London) </p> </li>
+   
+    <%end%>
+    </ul>
+
+
+    
+
+    <%=  button_to "Go back to All Tutors Page", tutors_path, method: :get%>
+</div>

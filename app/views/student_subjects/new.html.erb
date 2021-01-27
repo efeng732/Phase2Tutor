@@ -1,0 +1,31 @@
+<br>
+<br>
+<br> 
+<br>
+<br>
+<div class="joiners">
+<h1> Please Choose your Preferred Subjects </h1>
+
+<% if @errors %>
+<%@errors.each do |error|%>
+<p style= "color: red; font-size: 24px"> <%= error %></p>
+<%end%>
+<%end%>
+
+
+<%= form_for @student_subject, url: student_subjects_path do |f| %>
+<%= f.label :subject_id%>
+<%= f.collection_select :subject_id, Subject.all, :id, :subject%>
+<%= f.hidden_field :student_id, value: @current_student.id %>
+
+<% #f.label :student_id%>
+<% #f.collection_select :student_id, Student.all, :id, :first_name %>
+
+<%= f.submit "Set Subject"%>
+
+<%end%>
+<br>
+<br>
+
+<img src= "https://cms.groupeditors.com/img/2db4717b-8784-4e13-a9f1-2f567fddcbbc.jpg" alt="noooooooo">
+</div>
